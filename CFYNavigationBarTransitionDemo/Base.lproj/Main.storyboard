@@ -57,7 +57,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RB2-NC-uHK">
-                                <rect key="frame" x="100" y="110" width="84" height="24"/>
+                                <rect key="frame" x="100" y="110" width="83.5" height="24"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <state key="normal" title="Hide"/>
@@ -66,7 +66,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CWG-U7-HD2">
-                                <rect key="frame" x="192" y="110" width="84" height="24"/>
+                                <rect key="frame" x="191.5" y="110" width="84" height="24"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <state key="normal" title="Show Animate"/>
@@ -75,7 +75,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XLR-SH-JWL">
-                                <rect key="frame" x="284" y="110" width="83" height="24"/>
+                                <rect key="frame" x="283.5" y="110" width="83.5" height="24"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <state key="normal" title="Hide Animate"/>
@@ -84,7 +84,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vfc-HT-HNq">
-                                <rect key="frame" x="100" y="79" width="84" height="24"/>
+                                <rect key="frame" x="100" y="79" width="83.5" height="24"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <state key="normal" title="Pop"/>
@@ -93,7 +93,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="39Q-nD-UK6">
-                                <rect key="frame" x="192" y="79" width="84" height="24"/>
+                                <rect key="frame" x="191.5" y="79" width="84" height="24"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <state key="normal" title="Pop Root"/>
@@ -115,7 +115,7 @@
                                 </connections>
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bar颜色" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OOq-qg-38i">
-                                <rect key="frame" x="170" y="152" width="37" height="12"/>
+                                <rect key="frame" x="169" y="152" width="37" height="12"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -127,7 +127,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gU7-jh-q1L">
-                                <rect key="frame" x="284" y="79" width="83" height="24"/>
+                                <rect key="frame" x="283.5" y="79" width="83.5" height="24"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <state key="normal" title="Push Empty"/>
@@ -194,10 +194,10 @@
             </objects>
             <point key="canvasLocation" x="487" y="438"/>
         </scene>
-        <!--Push EmptyVC Id-->
+        <!--View Controller-->
         <scene sceneID="4a5-B9-tyd">
             <objects>
-                <viewController id="jwj-Lw-Ct7" customClass="PushEmptyVCId" sceneMemberID="viewController">
+                <viewController id="jwj-Lw-Ct7" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Yju-Eb-E7y"/>
                         <viewControllerLayoutGuide type="bottom" id="fuv-b8-qXc"/>

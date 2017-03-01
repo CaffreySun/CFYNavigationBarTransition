@@ -20,6 +20,13 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)cfy_setNavigationBarBackgroundColor:(UIColor *)color;
 
 /**
+ 设置背景图片
+
+ @param image 背景图
+ */
+- (void)cfy_setNavigationBarBackgroundImage:(UIImage *)image;
+
+/**
  设置导航栏透明度
  
  @param alpha 透明度
@@ -30,7 +37,6 @@ NS_ASSUME_NONNULL_BEGIN
  bar背景色
  */
 @property (readonly) UIColor *cfy_navigationBarBackgroundColor;
-
 
 /**
  bar透明度
