@@ -1,8 +1,8 @@
 ### CFYNavigationBarTransition是一个设置NavigationBar颜色、透明度、隐藏/显示工具。
 ##### 详细介绍
 使用CFYNavigationBarTransition可以为每个ViewController的NavigationBar设置自己的颜色、透明度、以及隐藏/显示，并且不同样式的NavigationBar在进行push或者pop时，动画过度和谐美观。效果如下：
-![竖屏效果](http://om4qlnjqk.bkt.clouddn.com/CFY1.gif "竖屏效果")
-![横屏效果](http://om4qlnjqk.bkt.clouddn.com/CFY2.gif "横屏效果")
+![竖屏效果](http://om4qlnjqk.bkt.clouddn.com/CFY%E6%95%88%E6%9E%9C1.gif "竖屏效果")
+![横屏效果](http://om4qlnjqk.bkt.clouddn.com/CFY%E6%95%88%E6%9E%9C2.gif "横屏效果")
 ##### 安装
 方法一，直接将CFYNavigationBarTransition拖入代码
 方法二，使用Cocoapods，支持iOS 8以上系统
