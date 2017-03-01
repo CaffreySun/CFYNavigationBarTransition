@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+// UIViewController CFYNavigationBarTransition
 @interface UIViewController (CFYNavigationBarTransition)
 /**
  设置导航栏是否隐藏
