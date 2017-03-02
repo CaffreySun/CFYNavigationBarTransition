@@ -48,8 +48,9 @@
     // push时如果下一个页面没有设置背景色和透明度，那么会自动沿用当前页面的颜色和透明度。
     // 保存当前页面的颜色
     [viewController cfy_setNavigationBarBackgroundColor:fromVC.cfy_navigationBarBackgroundColor];
+    CGFloat alpha = fromVC.cfy_navigationBarAlpha;
     // 保存当前页面的透明度
-    [viewController cfy_setNavigationBarAlpha:fromVC.cfy_navigationBarAlpha];
+    [viewController cfy_setNavigationBarAlpha:alpha];
     
     // 保存完成开始Push
     [self cfy_pushViewController:viewController animated:YES];
