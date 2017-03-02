@@ -261,8 +261,7 @@
 - (void)setCfy_navigationBarBackgroundColor:(UIColor *)navigationBarBackgroundColor {
     objc_setAssociatedObject(self, @selector(cfy_navigationBarBackgroundColor), navigationBarBackgroundColor, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
-
--(CGFloat)cfy_navigationBarAlpha {
+    -(CGFloat)cfy_navigationBarAlpha {
     NSNumber *alpha = objc_getAssociatedObject(self, _cmd);
     if (!alpha) {
         [self setCfy_navigationBarAlpha:1.];
@@ -273,6 +272,6 @@
 }
 
 - (void)setCfy_navigationBarAlpha:(CGFloat)navigationBarAlpha {
-    objc_setAssociatedObject(self, @selector(cfy_navigationBarAlpha), @(navigationBarAlpha), OBJC_ASSOCIATION_ASSIGN);
+    objc_setAssociatedObject(self, @selector(cfy_navigationBarAlpha), @(navigationBarAlpha), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 @end

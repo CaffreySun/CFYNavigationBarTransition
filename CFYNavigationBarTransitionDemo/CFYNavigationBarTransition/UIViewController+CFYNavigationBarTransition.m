@@ -272,6 +272,6 @@
 }
 
 - (void)setCfy_navigationBarAlpha:(CGFloat)navigationBarAlpha {
-    objc_setAssociatedObject(self, @selector(cfy_navigationBarAlpha), @(navigationBarAlpha), OBJC_ASSOCIATION_ASSIGN);
+    objc_setAssociatedObject(self, @selector(cfy_navigationBarAlpha), @(navigationBarAlpha), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 @end
