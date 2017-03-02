@@ -44,6 +44,11 @@
 }
 
 - (void)cfy_pushViewController:(UIViewController *)viewController animated:(BOOL)animated {
+    if (self.viewControllers.count == 0) {
+        [self cfy_pushViewController:viewController animated:YES];
+        return;
+    }
+    
     UIViewController *fromVC = [self.viewControllers lastObject];
     // push时如果下一个页面没有设置背景色和透明度，那么会自动沿用当前页面的颜色和透明度。
     // 保存当前页面的颜色
