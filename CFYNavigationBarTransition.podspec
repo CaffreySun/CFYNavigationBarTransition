@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "CFYNavigationBarTransition"
-  s.version      = "0.0.4"
+  s.version      = "0.0.5"
   s.summary      = "navigationBar定制工具"
 
   # This description is used to generate tags and improve search results.
