@@ -9,6 +9,7 @@
 #import "UIViewController+CFYNavigationBarTransition.h"
 #import "CFYNavigationBarTransitionConfig.h"
 #import "UIImage+CFYNavigationBarTransition.h"
+#import "CFYNavigationBar.h"
 #import "CFYSwizzle.h"
 #import <objc/runtime.h>
 
@@ -17,7 +18,7 @@
 /**
  cfy_navBarBgView,这个view就是核心，改变navigationBar颜色其实是改变cfy_navBarBgView的背景色
  */
-@property (nonatomic, strong) UIView *cfy_navBarBgView;
+@property (nonatomic, strong) CFYNavigationBar *cfy_navBarBgView;
 
 /**
  用来判断view是否加载
@@ -33,6 +34,16 @@
  保存navigationBar颜色透明度
  */
 @property (nonatomic, assign) CGFloat cfy_navigationBarAlpha;
+
+/**
+ shadowImage
+ */
+@property (nonatomic, strong) UIImage *cfy_shadowImage;
+
+/**
+ shadowImageColor
+ */
+@property (nonatomic, strong) UIColor *cfy_shadowImageColor;
 
 @end
 
@@ -136,7 +147,11 @@
  @param image 背景图
  */
 - (void)cfy_setNavigationBarBackgroundImage:(UIImage *)image {
-    // 后续版本加入
+    if (image) {
+        self.cfy_navBarBgView.cfy_navigationBarBackgroundColor = [UIColor colorWithPatternImage:image];
+    } else {
+        self.cfy_navBarBgView.cfy_navigationBarBackgroundColor = self.cfy_navigationBarBackgroundColor;
+    }
 }
 
 /**
@@ -147,7 +162,32 @@
 - (void)cfy_setNavigationBarAlpha:(CGFloat)alpha {
     self.cfy_navigationBarAlpha = alpha;
     if (self.navigationController) {
-        self.cfy_navBarBgView.alpha = alpha;
+        self.cfy_navBarBgView.cfy_navigationBarAlpha = @(alpha);
+    }
+}
+
+/**
+ 设置导航栏底部线条颜色
+ 
+ @param color 线条颜色
+ */
+- (void)cfy_setNavigationBarShadowImageBackgroundColor:(UIColor *)color {
+    self.cfy_shadowImageColor = color;
+    if (self.navigationController) {
+        self.cfy_navBarBgView.cfy_shadowImageColor = color;
+    }
+}
+
+
+/**
+ 设置导航栏底部线条图片
+ 
+ @param image 图片为nil时线条使用纯色
+ */
+- (void)cfy_setNavigationBarShadowImage:(UIImage * _Nullable )image {
+    self.cfy_shadowImage = image;
+    if (self.navigationController) {
+        self.cfy_navBarBgView.cfy_shadowImage = image;
     }
 }
 
@@ -197,19 +237,25 @@
     CGRect rect = [self cfy_getNavigationBarBackgroundViewRect];
     
     // 初始化
-    UIView *navBarBgView = [[UIView alloc] initWithFrame:CGRectMake(0, rect.origin.y, rect.size.width, rect.size.height)];
+    CFYNavigationBar *navBarBgView = [[CFYNavigationBar alloc] initWithFrame:CGRectMake(0, rect.origin.y, rect.size.width, rect.size.height)];
     [self.view addSubview:navBarBgView];
     
     // 判断有没有设置颜色
     if (self.cfy_navigationBarBackgroundColor) {
-        navBarBgView.backgroundColor = self.cfy_navigationBarBackgroundColor;
+        navBarBgView.cfy_navigationBarBackgroundColor = self.cfy_navigationBarBackgroundColor;
     } else {
         // 默认是白色
-        navBarBgView.backgroundColor = [UIColor whiteColor];
+        navBarBgView.cfy_navigationBarBackgroundColor = [UIColor whiteColor];
         self.cfy_navigationBarBackgroundColor = [UIColor whiteColor];
     }
     // 设置透明度，默认为1
-    navBarBgView.alpha = self.cfy_navigationBarAlpha;
+    navBarBgView.cfy_navigationBarAlpha = @(self.cfy_navigationBarAlpha);
+    if (self.cfy_shadowImage) {
+        navBarBgView.cfy_shadowImage = self.cfy_shadowImage;
+    }
+    if (self.cfy_shadowImageColor) {
+        navBarBgView.cfy_shadowImageColor = self.cfy_shadowImageColor;
+    }
     // 是否隐藏
     navBarBgView.hidden = self.navigationController.navigationBar.isHidden;
     // 保存
@@ -232,8 +278,8 @@
 }
 
 #pragma mark - getter/setter -
--(UIView *)cfy_navBarBgView {
-    UIView *navBarBgView = objc_getAssociatedObject(self, _cmd);
+-(CFYNavigationBar *)cfy_navBarBgView {
+    CFYNavigationBar *navBarBgView = objc_getAssociatedObject(self, _cmd);
     
     if (nil == navBarBgView) {
         [self cfy_addNavBarBgView];
@@ -242,7 +288,7 @@
     return navBarBgView;
 }
 
-- (void)setCfy_navBarBgView:(UIView *)navBarBgView {
+- (void)setCfy_navBarBgView:(CFYNavigationBar *)navBarBgView {
     objc_setAssociatedObject(self, @selector(cfy_navBarBgView), navBarBgView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
@@ -274,5 +320,19 @@
 
 - (void)setCfy_navigationBarAlpha:(CGFloat)navigationBarAlpha {
     objc_setAssociatedObject(self, @selector(cfy_navigationBarAlpha), @(navigationBarAlpha), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+/*@property (nonatomic, strong) UIImage *cfy_shadowImage;
+ @property (nonatomic, strong) UIColor *cfy_shadowImageColor;*/
+- (void)setCfy_shadowImage:(UIImage *)shadowImage {
+    objc_setAssociatedObject(self, @selector(cfy_shadowImage), shadowImage, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+- (UIImage *)cfy_shadowImage {
+    return objc_getAssociatedObject(self, _cmd);
+}
+- (UIColor *)cfy_shadowImageColor {
+    return objc_getAssociatedObject(self, _cmd);
+}
+- (void)setCfy_shadowImageColor:(UIColor *)shadowImageColor {
+    objc_setAssociatedObject(self, @selector(cfy_shadowImageColor), shadowImageColor, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 @end

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		84286F9B1E6E993E00168C69 /* CFYNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 84286F9A1E6E993E00168C69 /* CFYNavigationBar.m */; };
 		E96FAB9E1E65212D003C4D9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E96FAB9D1E65212D003C4D9A /* main.m */; };
 		E96FABA11E65212D003C4D9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E96FABA01E65212D003C4D9A /* AppDelegate.m */; };
 		E96FABA41E65212D003C4D9A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E96FABA31E65212D003C4D9A /* ViewController.m */; };
@@ -21,6 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		84286F991E6E993E00168C69 /* CFYNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFYNavigationBar.h; sourceTree = "<group>"; };
+		84286F9A1E6E993E00168C69 /* CFYNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFYNavigationBar.m; sourceTree = "<group>"; };
 		E96FAB991E65212D003C4D9A /* CFYNavigationBarTransitionDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CFYNavigationBarTransitionDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E96FAB9D1E65212D003C4D9A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E96FAB9F1E65212D003C4D9A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -122,6 +125,8 @@
 				E96FABE01E6527E9003C4D9A /* UINavigationController+CFYNavigationBarTransition_Public.h */,
 				E96FABE11E6527E9003C4D9A /* UIViewController+CFYNavigationBarTransition.h */,
 				E96FABE21E6527E9003C4D9A /* UIViewController+CFYNavigationBarTransition.m */,
+				84286F991E6E993E00168C69 /* CFYNavigationBar.h */,
+				84286F9A1E6E993E00168C69 /* CFYNavigationBar.m */,
 			);
 			path = CFYNavigationBarTransition;
 			sourceTree = "<group>";
@@ -201,6 +206,7 @@
 				E96FABA41E65212D003C4D9A /* ViewController.m in Sources */,
 				E96FABC61E652194003C4D9A /* ColorPickerView.m in Sources */,
 				E96FABE61E6527E9003C4D9A /* UIViewController+CFYNavigationBarTransition.m in Sources */,
+				84286F9B1E6E993E00168C69 /* CFYNavigationBar.m in Sources */,
 				E96FABE31E6527E9003C4D9A /* CFYSwizzle.m in Sources */,
 				E96FABA11E65212D003C4D9A /* AppDelegate.m in Sources */,
 				E96FAB9E1E65212D003C4D9A /* main.m in Sources */,

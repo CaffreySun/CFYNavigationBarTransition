@@ -13,6 +13,7 @@
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet ColorPickerView *colorPickerView;
 @property (weak, nonatomic) IBOutlet UISlider *alphaSlider;
+@property (weak, nonatomic) IBOutlet ColorPickerView *shadowColorPickerView;
 
 @end
 
@@ -24,16 +25,27 @@
     NSInteger red = arc4random()%255;
     NSInteger green = arc4random()%255;
     NSInteger blue = arc4random()%255;
+    
     // 随机颜色
     [self cfy_setNavigationBarBackgroundColor:[UIColor colorWithRed:red/255. green:green/255. blue:blue/255. alpha:1]];
-    
+    __weak typeof(self) weakSelf = self;
     [self.colorPickerView colorPickerDidChangedBlock:^(ColorPickerView *colorPickerView, UIColor *currentColor) {
-        [self cfy_setNavigationBarBackgroundColor:currentColor];
+        [weakSelf cfy_setNavigationBarBackgroundColor:currentColor];
+    }];
+    [self.shadowColorPickerView colorPickerDidChangedBlock:^(ColorPickerView *colorPickerView, UIColor *currentColor) {
+        [weakSelf cfy_setNavigationBarShadowImageBackgroundColor:currentColor];
     }];
 }
+
+- (void)dealloc {
+    NSLog(@"dealloc");
+}
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:self.hideBar animated:YES];
+//    [self.navigationController.navigationBar setShadowImage:[UIImage imageNamed:@"shadownImg1"]];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -69,6 +81,22 @@
 - (IBAction)alphaSliderValueChanged:(UISlider *)sender {
     [self cfy_setNavigationBarAlpha:sender.value];
 }
+- (IBAction)barImgAction:(id)sender {
+    [self cfy_setNavigationBarBackgroundImage:[UIImage imageNamed:@"bgicon"]];
+}
+- (IBAction)barColorAction:(id)sender {
+    [self cfy_setNavigationBarBackgroundImage:nil];
+}
+- (IBAction)shadowImageAction:(id)sender {
+    [self cfy_setNavigationBarShadowImage:[UIImage imageNamed:@"shadownImg1"]];
+}
+- (IBAction)shadowColorAction:(id)sender {
+    [self cfy_setNavigationBarShadowImage:nil];
+}
+- (IBAction)shadowImageAlphaSliderValueChanged:(UISlider *)sender {
+    
+}
+
 
 - (void)setHideBar:(BOOL)hideBar {
     _hideBar = hideBar;

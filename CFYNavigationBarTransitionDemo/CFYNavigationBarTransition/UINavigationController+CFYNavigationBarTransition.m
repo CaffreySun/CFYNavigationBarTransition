@@ -25,6 +25,7 @@
     [self cfy_navvc_viewDidLoad];
     // 设置navigationBar为透明，但是如果navigationBar.translucent = NO，那么下面这句话就不起作用，navigationBar就会变成不透明的白色，所以不要设置navigationBar.translucent = NO
     [self.navigationBar setBackgroundImage:[UIImage cfy_imageWithColor:[UIColor clearColor]] forBarPosition:0 barMetrics:UIBarMetricsDefault];
+    [self.navigationBar setShadowImage:[UIImage new]];
 }
 
 - (void)cfy_setNavigationBarHidden:(BOOL)hidden {
@@ -56,7 +57,10 @@
     CGFloat alpha = fromVC.cfy_navigationBarAlpha;
     // 保存当前页面的透明度
     [viewController cfy_setNavigationBarAlpha:alpha];
-    
+    UIImage *shadowImage = fromVC.cfy_shadowImage;
+    [viewController cfy_setNavigationBarShadowImage:shadowImage];
+    UIColor *color = fromVC.cfy_shadowImageColor;
+    [viewController cfy_setNavigationBarShadowImageBackgroundColor:color];
     // 保存完成开始Push
     [self cfy_pushViewController:viewController animated:YES];
 }
