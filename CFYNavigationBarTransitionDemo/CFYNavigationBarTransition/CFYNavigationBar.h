@@ -10,16 +10,27 @@
 
 @interface CFYNavigationBar : UIView
 
+/**
+ shadowImage图片
+ 可以为null,为null时使用背景色
+ */
 @property (nonatomic, strong) UIImage *cfy_shadowImage;
+
+/**
+ shadowImage的颜色
+ cfy_shadowImage为null时才显示颜色
+ */
 @property (nonatomic, strong) UIColor *cfy_shadowImageColor;
+
 /**
  保存navigationBar颜色
  */
 @property (nonatomic, strong) UIColor *cfy_navigationBarBackgroundColor;
 
+
 /**
- 保存navigationBar颜色透明度
+ 保存navigationBar图片
  */
-@property (nonatomic, strong) NSNumber *cfy_navigationBarAlpha;
+@property (nonatomic, strong) UIImage *cfy_navigationBarBackgroundImage;
 
 @end

@@ -26,9 +26,14 @@
 @property (nonatomic, assign) BOOL cfy_viewAppeared;
 
 /**
- 保存navigationBar颜色
+ 保存navigationBar背景颜色
  */
 @property (nonatomic, strong) UIColor *cfy_navigationBarBackgroundColor;
+
+/**
+ 保存navigationBar背景图片
+ */
+@property (nonatomic, strong) UIImage *cfy_navigationBarBackgroundImage;
 
 /**
  保存navigationBar颜色透明度
@@ -46,7 +51,6 @@
 @property (nonatomic, strong) UIColor *cfy_shadowImageColor;
 
 @end
-
 
 @implementation UIViewController (CFYNavigationBarTransition)
 /**
@@ -79,7 +83,6 @@
     [self cfy_viewDidDisappear:YES];
     self.cfy_viewAppeared = NO;
 }
-
 
 /**
  在viewWillLayoutSubviews中对cfy_navBarBgView进行处理，使cfy_navBarBgView能在不同环境正确显示
@@ -137,7 +140,7 @@
 - (void)cfy_setNavigationBarBackgroundColor:(UIColor *)color {
     self.cfy_navigationBarBackgroundColor = color;
     if (self.navigationController) {
-        self.cfy_navBarBgView.backgroundColor = color;
+        self.cfy_navBarBgView.cfy_navigationBarBackgroundColor = color;
     }
 }
 
@@ -147,10 +150,9 @@
  @param image 背景图
  */
 - (void)cfy_setNavigationBarBackgroundImage:(UIImage *)image {
-    if (image) {
-        self.cfy_navBarBgView.cfy_navigationBarBackgroundColor = [UIColor colorWithPatternImage:image];
-    } else {
-        self.cfy_navBarBgView.cfy_navigationBarBackgroundColor = self.cfy_navigationBarBackgroundColor;
+    self.cfy_navigationBarBackgroundImage = image;
+    if (self.navigationController) {
+        self.cfy_navBarBgView.cfy_navigationBarBackgroundImage = image;
     }
 }
 
@@ -162,7 +164,7 @@
 - (void)cfy_setNavigationBarAlpha:(CGFloat)alpha {
     self.cfy_navigationBarAlpha = alpha;
     if (self.navigationController) {
-        self.cfy_navBarBgView.cfy_navigationBarAlpha = @(alpha);
+        self.cfy_navBarBgView.alpha = alpha;
     }
 }
 
@@ -217,8 +219,6 @@
     }
 }
 
-
-
 /**
  添加navigationBar背景view
  */
@@ -248,8 +248,11 @@
         navBarBgView.cfy_navigationBarBackgroundColor = [UIColor whiteColor];
         self.cfy_navigationBarBackgroundColor = [UIColor whiteColor];
     }
+    // 设置图片
+    navBarBgView.cfy_navigationBarBackgroundImage = self.cfy_navigationBarBackgroundImage;
+    
     // 设置透明度，默认为1
-    navBarBgView.cfy_navigationBarAlpha = @(self.cfy_navigationBarAlpha);
+    navBarBgView.alpha = self.cfy_navigationBarAlpha;
     if (self.cfy_shadowImage) {
         navBarBgView.cfy_shadowImage = self.cfy_shadowImage;
     }
@@ -261,7 +264,6 @@
     // 保存
     [self setCfy_navBarBgView:navBarBgView];
 }
-
 
 /**
  获取navigationBar._backgroundView在self.view中的frame
@@ -308,6 +310,14 @@
     objc_setAssociatedObject(self, @selector(cfy_navigationBarBackgroundColor), navigationBarBackgroundColor, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
+- (UIImage *)cfy_navigationBarBackgroundImage {
+    return objc_getAssociatedObject(self, _cmd);
+}
+
+- (void)setCfy_navigationBarBackgroundImage:(UIImage *)navigationBarBackgroundImage {
+    objc_setAssociatedObject(self, @selector(cfy_navigationBarBackgroundImage), navigationBarBackgroundImage, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
 -(CGFloat)cfy_navigationBarAlpha {
     NSNumber *alpha = objc_getAssociatedObject(self, _cmd);
     if (!alpha) {
@@ -321,18 +331,21 @@
 - (void)setCfy_navigationBarAlpha:(CGFloat)navigationBarAlpha {
     objc_setAssociatedObject(self, @selector(cfy_navigationBarAlpha), @(navigationBarAlpha), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
-/*@property (nonatomic, strong) UIImage *cfy_shadowImage;
- @property (nonatomic, strong) UIColor *cfy_shadowImageColor;*/
+
 - (void)setCfy_shadowImage:(UIImage *)shadowImage {
     objc_setAssociatedObject(self, @selector(cfy_shadowImage), shadowImage, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
+
 - (UIImage *)cfy_shadowImage {
     return objc_getAssociatedObject(self, _cmd);
 }
+
 - (UIColor *)cfy_shadowImageColor {
     return objc_getAssociatedObject(self, _cmd);
 }
+
 - (void)setCfy_shadowImageColor:(UIColor *)shadowImageColor {
     objc_setAssociatedObject(self, @selector(cfy_shadowImageColor), shadowImageColor, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
+
 @end

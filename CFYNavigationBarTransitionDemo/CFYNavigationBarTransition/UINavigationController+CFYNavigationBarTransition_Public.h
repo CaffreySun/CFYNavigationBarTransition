@@ -29,7 +29,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  设置导航栏透明度
  
- @param alpha 透明度
+ @param alpha 透明度，值为0 ~ 1.0
  */
 - (void)cfy_setNavigationBarAlpha:(CGFloat)alpha;
 
@@ -48,11 +48,15 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)cfy_setNavigationBarShadowImage:(UIImage * _Nullable )image;
 
-
 /**
  bar背景色
  */
 @property (readonly) UIColor *cfy_navigationBarBackgroundColor;
+
+/**
+ 保存navigationBar背景图片
+ */
+@property (readonly) UIImage *cfy_navigationBarBackgroundImage;
 
 /**
  bar透明度

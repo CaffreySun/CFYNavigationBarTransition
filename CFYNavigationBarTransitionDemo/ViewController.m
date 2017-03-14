@@ -14,6 +14,8 @@
 @property (weak, nonatomic) IBOutlet ColorPickerView *colorPickerView;
 @property (weak, nonatomic) IBOutlet UISlider *alphaSlider;
 @property (weak, nonatomic) IBOutlet ColorPickerView *shadowColorPickerView;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UIImageView *bgImageView;
 
 @end
 
@@ -25,7 +27,7 @@
     NSInteger red = arc4random()%255;
     NSInteger green = arc4random()%255;
     NSInteger blue = arc4random()%255;
-    
+    self.bgImageView.userInteractionEnabled = NO;
     // 随机颜色
     [self cfy_setNavigationBarBackgroundColor:[UIColor colorWithRed:red/255. green:green/255. blue:blue/255. alpha:1]];
     __weak typeof(self) weakSelf = self;
@@ -44,8 +46,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:self.hideBar animated:YES];
-//    [self.navigationController.navigationBar setShadowImage:[UIImage imageNamed:@"shadownImg1"]];
-    
+    self.navigationController.interactivePopGestureRecognizer.delegate = (id <UIGestureRecognizerDelegate>)self.navigationController;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -88,23 +89,11 @@
     [self cfy_setNavigationBarBackgroundImage:nil];
 }
 - (IBAction)shadowImageAction:(id)sender {
-    [self cfy_setNavigationBarShadowImage:[UIImage imageNamed:@"shadownImg1"]];
+    [self cfy_setNavigationBarShadowImage:[UIImage imageNamed:@"shadowImage.png"]];
 }
 - (IBAction)shadowColorAction:(id)sender {
     [self cfy_setNavigationBarShadowImage:nil];
 }
-- (IBAction)shadowImageAlphaSliderValueChanged:(UISlider *)sender {
-    
-}
-
-
-- (void)setHideBar:(BOOL)hideBar {
-    _hideBar = hideBar;
-    if (hideBar) {
-        self.navigationController.interactivePopGestureRecognizer.delegate = (id <UIGestureRecognizerDelegate>)self.navigationController;
-    }
-}
-
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation

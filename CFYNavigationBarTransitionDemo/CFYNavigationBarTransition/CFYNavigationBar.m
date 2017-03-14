@@ -12,22 +12,18 @@
 
 @property (nonatomic, strong) UIImageView *cfy_shadowImageView;
 
+@property (nonatomic, strong) UIView *cfy_backgroundImageView;
+
 @end
 
 @implementation CFYNavigationBar
 
-@synthesize cfy_navigationBarAlpha = _cfy_navigationBarAlpha;
 @synthesize cfy_navigationBarBackgroundColor = _cfy_navigationBarBackgroundColor;
-
-//- (instancetype)initWithFrame:(CGRect)frame {
-//    self = [super initWithFrame:frame];
-//    
-//    return self;
-//}
 
 - (void)layoutSubviews {
     [super layoutSubviews];
     self.cfy_shadowImageView.frame = CGRectMake(0, CGRectGetHeight(self.bounds), CGRectGetWidth(self.bounds), [self getImageViewHeight]);
+    self.cfy_backgroundImageView.frame = CGRectMake(0, 0, CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds));
 }
 
 - (CGFloat)getImageViewHeight {
@@ -38,6 +34,7 @@
     return height;
 }
 
+#pragma mark - getter/setter -
 - (UIImageView *)cfy_shadowImageView {
     if (nil == _cfy_shadowImageView) {
         _cfy_shadowImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(self.bounds), CGRectGetWidth(self.bounds), [self getImageViewHeight])];
@@ -52,13 +49,29 @@
     return _cfy_shadowImageView;
 }
 
+- (UIView *)cfy_backgroundImageView {
+    if (nil == _cfy_backgroundImageView) {
+        _cfy_backgroundImageView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds))];
+        [self addSubview:_cfy_backgroundImageView];
+        _cfy_backgroundImageView.backgroundColor = [UIColor clearColor];
+        if (self.cfy_navigationBarBackgroundImage) {
+            _cfy_backgroundImageView.backgroundColor = [UIColor colorWithPatternImage:self.cfy_navigationBarBackgroundImage];
+        }
+    }
+    
+    return _cfy_backgroundImageView;
+}
+
 - (void)setCfy_shadowImage:(UIImage *)shadowImage {
     _cfy_shadowImage = shadowImage;
     _cfy_shadowImageView.image = self.cfy_shadowImage;
-    CGFloat height = 0.5;
-    if (shadowImage) {
-        height = shadowImage.size.height;
+    CGFloat height = shadowImage.size.height;
+    UIColor *shadowImageColoer = [UIColor clearColor];
+    if (!shadowImage) {
+        height = 0.5;
+        shadowImageColoer = self.cfy_shadowImageColor;
     }
+    self.cfy_shadowImageView.backgroundColor = shadowImageColoer;
     self.cfy_shadowImageView.frame = CGRectMake(0, CGRectGetHeight(self.bounds), CGRectGetWidth(self.bounds), height);
 }
 
@@ -69,21 +82,6 @@
     _cfy_shadowImageColor = shadowImageColor;
     self.cfy_shadowImageView.backgroundColor = shadowImageColor;
     self.cfy_shadowImageView.frame = CGRectMake(0, CGRectGetHeight(self.bounds), CGRectGetWidth(self.bounds), [self getImageViewHeight]);
-}
-
-- (NSNumber *)cfy_navigationBarAlpha {
-    if (nil == _cfy_navigationBarAlpha) {
-        _cfy_navigationBarAlpha = @(1);
-    }
-    return _cfy_navigationBarAlpha;
-}
-
-- (void)setCfy_navigationBarAlpha:(NSNumber *)navigationBarAlpha {
-    if (!navigationBarAlpha) {
-        navigationBarAlpha = @(1);
-    }
-    _cfy_navigationBarAlpha = navigationBarAlpha;
-    self.backgroundColor = [self.backgroundColor colorWithAlphaComponent:self.cfy_navigationBarAlpha.floatValue];
 }
 
 - (UIColor *)cfy_navigationBarBackgroundColor {
@@ -98,7 +96,12 @@
         navigationBarBackgroundColor = [UIColor whiteColor];
     }
     _cfy_navigationBarBackgroundColor = navigationBarBackgroundColor;
-    self.backgroundColor = [navigationBarBackgroundColor colorWithAlphaComponent:self.cfy_navigationBarAlpha.floatValue];
+    self.backgroundColor = navigationBarBackgroundColor;
+}
+
+- (void)setCfy_navigationBarBackgroundImage:(UIImage *)navigationBarBackgroundImage {
+    _cfy_navigationBarBackgroundImage = navigationBarBackgroundImage;
+    self.cfy_backgroundImageView.backgroundColor = [UIColor colorWithPatternImage:navigationBarBackgroundImage];
 }
 
 @end

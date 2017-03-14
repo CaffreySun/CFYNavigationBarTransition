@@ -52,15 +52,22 @@
     
     UIViewController *fromVC = [self.viewControllers lastObject];
     // push时如果下一个页面没有设置背景色和透明度，那么会自动沿用当前页面的颜色和透明度。
-    // 保存当前页面的颜色
-    [viewController cfy_setNavigationBarBackgroundColor:fromVC.cfy_navigationBarBackgroundColor];
-    CGFloat alpha = fromVC.cfy_navigationBarAlpha;
+    // 保存当前页面的bar颜色
+    UIColor *bgColor = fromVC.cfy_navigationBarBackgroundColor;
+    [viewController cfy_setNavigationBarBackgroundColor:bgColor];
+    // 保存当前页面的bar图片
+    UIImage *bgImage = fromVC.cfy_navigationBarBackgroundImage;
+    [viewController cfy_setNavigationBarBackgroundImage:bgImage];
     // 保存当前页面的透明度
+    CGFloat alpha = fromVC.cfy_navigationBarAlpha;
     [viewController cfy_setNavigationBarAlpha:alpha];
+    // 保存shadowImage
     UIImage *shadowImage = fromVC.cfy_shadowImage;
     [viewController cfy_setNavigationBarShadowImage:shadowImage];
-    UIColor *color = fromVC.cfy_shadowImageColor;
-    [viewController cfy_setNavigationBarShadowImageBackgroundColor:color];
+    // 保存shadowImageColor
+    UIColor *shadowImageColor = fromVC.cfy_shadowImageColor;
+    [viewController cfy_setNavigationBarShadowImageBackgroundColor:shadowImageColor];
+    
     // 保存完成开始Push
     [self cfy_pushViewController:viewController animated:YES];
 }
