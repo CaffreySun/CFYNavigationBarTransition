@@ -1,5 +1,4 @@
-## 一个设置NavigationBar颜色、透明度、隐藏/显示工具。
-## 　　　　　　　　　——CFYNavigationBarTransition
+## 一个设置NavigationBar颜色、透明度、隐藏/显示工具 — — CFYNavigationBarTransition
 
 ****
 
