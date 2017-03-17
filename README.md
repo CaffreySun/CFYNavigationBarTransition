@@ -12,11 +12,11 @@
 
 ## 使用
 　　引用：`#import "CFYNavigationBarTransition.h"`，调用一下接口
-- 改变navigationBar的颜色，调用:`[viewController cfy\_setNavigationBarBackgroundColor:]`
-- 改变navigationBar的背景图，调用:`[viewController cfy\_setNavigationBarBackgroundImage:]`
-- 改变navigationBar的透明度，调用:`[viewController cfy\_setNavigationBarAlpha:]`
-- 改变navigationBar的ShadowImage，调用:`[viewController cfy\_setNavigationBarShadowImage:]`
-- 改变navigationBar的ShadowImage的BackgroundColor，调用:`[viewController cfy\_setNavigationBarShadowImageBackgroundColor:]`
+- 改变navigationBar的颜色，调用:`[viewController cfy_setNavigationBarBackgroundColor:]`
+- 改变navigationBar的背景图，调用:`[viewController cfy_setNavigationBarBackgroundImage:]`
+- 改变navigationBar的透明度，调用:`[viewController cfy_setNavigationBarAlpha:]`
+- 改变navigationBar的ShadowImage，调用:`[viewController cfy_setNavigationBarShadowImage:]`
+- 改变navigationBar的ShadowImage的BackgroundColor，调用:`[viewController cfy_setNavigationBarShadowImageBackgroundColor:]`
 - 隐藏/显示则直接调用UINavigationController中原生的设置NavigationBar隐藏的方法`[navigationController setNavigationBarHidden:]`或`[navigationController setNavigationBarHidden:animated:]`
 
 ## 注意
