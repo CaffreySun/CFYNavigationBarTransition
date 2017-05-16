@@ -75,4 +75,20 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+@interface UINavigationController (CFYNavigationBarTransition_Public)
+/**
+ 关闭库的功能
+ 
+ @param close 是否关闭
+ */
+- (void)closeCFYNavigationBarFunction:(BOOL)close;
+
+
+/**
+ 是否关闭
+ */
+@property (readonly) BOOL isCloseCFYNavigationBar;
+
+@end
+
 NS_ASSUME_NONNULL_END

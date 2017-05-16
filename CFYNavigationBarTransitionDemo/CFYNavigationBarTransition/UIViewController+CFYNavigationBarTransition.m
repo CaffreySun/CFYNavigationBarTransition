@@ -7,6 +7,7 @@
 //
 
 #import "UIViewController+CFYNavigationBarTransition.h"
+#import "UINavigationController+CFYNavigationBarTransition_Public.h"
 #import "CFYNavigationBarTransitionConfig.h"
 #import "UIImage+CFYNavigationBarTransition.h"
 #import "CFYNavigationBar.h"
@@ -69,7 +70,8 @@
 - (void)cfy_viewDidLoad {
     [self cfy_viewDidLoad];
     // 如果存在navigationController则添加cfy_navBarBgView
-    if (self.navigationController) {
+    // 没有关闭使用本库的功能
+    if (self.navigationController && !self.navigationController.isCloseCFYNavigationBar) {
         [self cfy_addNavBarBgView];
     }
 }
@@ -89,7 +91,16 @@
  */
 - (void)cfy_viewWillLayoutSubviews {
     [self cfy_viewWillLayoutSubviews];
+    // 关闭的本库的功能，直接退出
+    if (self.navigationController.isCloseCFYNavigationBar) {
+        if (self.cfy_navBarBgView) {
+            [self.cfy_navBarBgView removeFromSuperview];
+        }
+        return;
+    }
+    
     // 当前viewController没navigationController，直接退出
+    // 关闭的本库的功能，直接退出
     if (!self.navigationController) {
         return;
     }
@@ -223,6 +234,9 @@
  添加navigationBar背景view
  */
 - (void)cfy_addNavBarBgView {
+    if (self.navigationController.isCloseCFYNavigationBar) {
+        return;
+    }
     if (!self.isViewLoaded) {
         return;
     }

@@ -24,6 +24,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self.navigationController closeCFYNavigationBarFunction:YES];
+    
     NSInteger red = arc4random()%255;
     NSInteger green = arc4random()%255;
     NSInteger blue = arc4random()%255;
