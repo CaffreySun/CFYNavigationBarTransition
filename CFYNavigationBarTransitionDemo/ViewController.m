@@ -24,7 +24,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.navigationController closeCFYNavigationBarFunction:YES];
+    // 打开下面注释，则对于self.navigationController来说，本库提供的功能则不起作用
+    //[self.navigationController closeCFYNavigationBarFunction:YES];
     
     NSInteger red = arc4random()%255;
     NSInteger green = arc4random()%255;
