@@ -68,7 +68,7 @@
 
 - (void)cfy_pushViewController:(UIViewController *)viewController animated:(BOOL)animated {
     if (self.viewControllers.count == 0) {
-        [self cfy_pushViewController:viewController animated:YES];
+        [self cfy_pushViewController:viewController animated:animated];
         return;
     }
     
@@ -96,7 +96,7 @@
     
     
     // 保存完成开始Push
-    [self cfy_pushViewController:viewController animated:YES];
+    [self cfy_pushViewController:viewController animated:animated];
 }
 
 - (void)closeCFYNavigationBarFunction:(BOOL)close {
