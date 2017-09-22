@@ -133,6 +133,11 @@
         rect.origin.y = 0 - rect.size.height;
     }
     
+    if (rect.origin.y > 0) {
+        rect.size.height = rect.origin.y + rect.size.height;
+        rect.origin.y = 0;
+    }
+    
     // cfy_navBarBgView的x固定0
     self.cfy_navBarBgView.frame = CGRectMake(0, rect.origin.y, rect.size.width, rect.size.height);
     
