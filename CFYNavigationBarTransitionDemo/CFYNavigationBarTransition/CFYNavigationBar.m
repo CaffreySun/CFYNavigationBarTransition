@@ -19,6 +19,7 @@
 @implementation CFYNavigationBar
 
 @synthesize cfy_navigationBarBackgroundColor = _cfy_navigationBarBackgroundColor;
+@synthesize cfy_shadowImageColor = _cfy_shadowImageColor;
 
 - (void)layoutSubviews {
     [super layoutSubviews];
@@ -30,20 +31,33 @@
     CGFloat height = 0.5;
     if (self.cfy_shadowImage) {
         height = self.cfy_shadowImage.size.height;
-    }
+    } 
     return height;
 }
 
 #pragma mark - getter/setter -
 - (UIImageView *)cfy_shadowImageView {
     if (nil == _cfy_shadowImageView) {
-        _cfy_shadowImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(self.bounds), CGRectGetWidth(self.bounds), [self getImageViewHeight])];
-        [self addSubview:_cfy_shadowImageView];
+        CGFloat height = 0.5;
+        UIImage *image = nil;
+        
+        if (self.cfy_shadowImage) {
+            image = self.cfy_shadowImage;
+            height = self.cfy_shadowImage.size.height;
+        } else if([UINavigationBar appearance].shadowImage) {
+            image = [UINavigationBar appearance].shadowImage;
+            _cfy_shadowImage = [UINavigationBar appearance].shadowImage;
+            height = [UINavigationBar appearance].shadowImage.size.height;
+        }
+        
+        _cfy_shadowImageView = [[UIImageView alloc] initWithFrame: CGRectMake(0, CGRectGetHeight(self.bounds), CGRectGetWidth(self.bounds), height)];
         // 设置默认背景色，和NavigationBar.shadowImage默认背景色相同
         _cfy_shadowImageView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];
-        if (self.cfy_shadowImage) {
-            _cfy_shadowImageView.image = self.cfy_shadowImage;
+        if (image) {
+            _cfy_shadowImageView.image = image;
         }
+        
+        [self addSubview:_cfy_shadowImageView];
     }
     
     return _cfy_shadowImageView;
@@ -64,15 +78,22 @@
 
 - (void)setCfy_shadowImage:(UIImage *)shadowImage {
     _cfy_shadowImage = shadowImage;
-    _cfy_shadowImageView.image = self.cfy_shadowImage;
+    _cfy_shadowImageView.image = shadowImage;
     CGFloat height = shadowImage.size.height;
-    UIColor *shadowImageColoer = [UIColor clearColor];
+    
     if (!shadowImage) {
         height = 0.5;
-        shadowImageColoer = self.cfy_shadowImageColor;
     }
-    self.cfy_shadowImageView.backgroundColor = shadowImageColoer;
+    self.cfy_shadowImageView.backgroundColor = self.cfy_shadowImageColor;
     self.cfy_shadowImageView.frame = CGRectMake(0, CGRectGetHeight(self.bounds), CGRectGetWidth(self.bounds), height);
+}
+
+- (UIColor *)cfy_shadowImageColor {
+    if (nil == _cfy_shadowImageColor) {
+        _cfy_shadowImageColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];
+    }
+    
+    return _cfy_shadowImageColor;
 }
 
 - (void)setCfy_shadowImageColor:(UIColor *)shadowImageColor {
@@ -93,7 +114,7 @@
 
 - (void)setCfy_navigationBarBackgroundColor:(UIColor *)navigationBarBackgroundColor {
     if (!navigationBarBackgroundColor) {
-        navigationBarBackgroundColor = [UIColor whiteColor];
+        navigationBarBackgroundColor = [UINavigationBar appearance].barTintColor ?: [UIColor whiteColor];
     }
     _cfy_navigationBarBackgroundColor = navigationBarBackgroundColor;
     self.backgroundColor = navigationBarBackgroundColor;

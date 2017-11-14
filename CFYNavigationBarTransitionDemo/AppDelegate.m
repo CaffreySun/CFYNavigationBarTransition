@@ -16,7 +16,10 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    /*** 打开这里的注释，并注释掉ViewController.m中viewDidLoad方法里的随机数设置代码，那么这里注释的设置就会生效
+    [[UINavigationBar appearance] setBarTintColor:[UIColor yellowColor]];
+    [[UINavigationBar appearance] setShadowImage:[UIImage imageNamed:@"shadowImage.png"]];
+     */
     return YES;
 }
 

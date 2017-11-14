@@ -259,22 +259,19 @@
     CFYNavigationBar *navBarBgView = [[CFYNavigationBar alloc] initWithFrame:CGRectMake(0, rect.origin.y, rect.size.width, rect.size.height)];
     [self.view addSubview:navBarBgView];
     
-    // 判断有没有设置颜色
-    if (self.cfy_navigationBarBackgroundColor) {
-        navBarBgView.cfy_navigationBarBackgroundColor = self.cfy_navigationBarBackgroundColor;
-    } else {
-        // 默认是白色
-        navBarBgView.cfy_navigationBarBackgroundColor = [UIColor whiteColor];
-        self.cfy_navigationBarBackgroundColor = [UIColor whiteColor];
-    }
+    // 设置背景颜色
+    navBarBgView.cfy_navigationBarBackgroundColor = self.cfy_navigationBarBackgroundColor;
+    
     // 设置图片
     navBarBgView.cfy_navigationBarBackgroundImage = self.cfy_navigationBarBackgroundImage;
     
     // 设置透明度，默认为1
     navBarBgView.alpha = self.cfy_navigationBarAlpha;
+    
     if (self.cfy_shadowImage) {
         navBarBgView.cfy_shadowImage = self.cfy_shadowImage;
     }
+    
     if (self.cfy_shadowImageColor) {
         navBarBgView.cfy_shadowImageColor = self.cfy_shadowImageColor;
     }
