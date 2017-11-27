@@ -84,7 +84,7 @@
         [viewController cfy_setNavigationBarBackgroundImage:bgImage];
         // 保存当前页面的透明度
         CGFloat alpha = fromVC.cfy_navigationBarAlpha;
-        [viewController cfy_setNavigationBarAlpha:alpha];
+        [viewController cfy_setNavigationBarAlphaFromLastNavBar:alpha];
         // 保存shadowImage
         UIImage *shadowImage = fromVC.cfy_shadowImage;
         [viewController cfy_setNavigationBarShadowImage:shadowImage];

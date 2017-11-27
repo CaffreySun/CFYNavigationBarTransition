@@ -42,6 +42,16 @@
 @property (nonatomic, assign) CGFloat cfy_navigationBarAlpha;
 
 /**
+ 保存navigationBar颜色透明度,用户用代码方式赋值来的
+ */
+@property (nonatomic, strong) NSNumber *cfy_navigationBarAlpha_code;
+
+/**
+ 保存navigationBar颜色透明度,继承自上一个导航栏来的
+ */
+@property (nonatomic, assign) NSNumber *cfy_navigationBarAlpha_nav;
+
+/**
  shadowImage
  */
 @property (nonatomic, strong) UIImage *cfy_shadowImage;
@@ -124,19 +134,7 @@
     }
     
     // 获取navigationBar的backgroundView在self.view中的位置，这个位置也就是cfy_navBarBgView所在的位置。
-    CGRect rect = [backgroundView.superview convertRect:backgroundView.frame toView:self.view];
-    
-    // 出现rect.origin.x < 0,情况只有在页面刚push出来并且navigationBar隐藏的时候。
-    // 这个时候讲rect.origin.y上移rect.size.height，使cfy_navBarBgView也隐藏
-    // 目的是防止在navigationBar.hidden=NO时出现动画显示错误
-    if (rect.origin.x < 0) {
-        rect.origin.y = 0 - rect.size.height;
-    }
-    
-    if (rect.origin.y > 0) {
-        rect.size.height = rect.origin.y + rect.size.height;
-        rect.origin.y = 0;
-    }
+    CGRect rect = [self cfy_getNavigationBarBackgroundViewRect];
     
     // cfy_navBarBgView的x固定0
     self.cfy_navBarBgView.frame = CGRectMake(0, rect.origin.y, rect.size.width, rect.size.height);
@@ -178,10 +176,19 @@
  @param alpha 透明度
  */
 - (void)cfy_setNavigationBarAlpha:(CGFloat)alpha {
-    self.cfy_navigationBarAlpha = alpha;
+    self.cfy_navigationBarAlpha_code = @(alpha);
     if (self.navigationController) {
         self.cfy_navBarBgView.alpha = alpha;
     }
+}
+
+/**
+ 根据上一个导航栏透明度设置当前导航栏都名都
+ 库内部方法，外部调用会有问题奥
+ @param alpha 透明度，值为0 ~ 1.0
+ */
+- (void)cfy_setNavigationBarAlphaFromLastNavBar:(CGFloat)alpha {
+    self.cfy_navigationBarAlpha_nav = @(alpha);
 }
 
 /**
@@ -238,18 +245,18 @@
 /**
  添加navigationBar背景view
  */
-- (void)cfy_addNavBarBgView {
+- (CFYNavigationBar *)cfy_addNavBarBgView {
     if (self.navigationController.isCloseCFYNavigationBar) {
-        return;
+        return nil;
     }
     if (!self.isViewLoaded) {
-        return;
+        return nil;
     }
     if (!self.navigationController) {
-        return;
+        return nil;
     }
     if (!self.navigationController.navigationBar) {
-        return;
+        return nil;
     }
     
     // 获取NavigationBar的BackgroundView在当前view中的位置
@@ -279,6 +286,8 @@
     navBarBgView.hidden = self.navigationController.navigationBar.isHidden;
     // 保存
     [self setCfy_navBarBgView:navBarBgView];
+    
+    return navBarBgView;
 }
 
 /**
@@ -292,6 +301,19 @@
         return CGRectZero;
     }
     CGRect rect = [backgroundView.superview convertRect:backgroundView.frame toView:self.view];
+    NSLog(@"_backgroundView.frame == %@", NSStringFromCGRect(rect));
+    // 出现rect.origin.x < 0,情况只有在页面刚push出来并且navigationBar隐藏的时候。
+    // 这个时候讲rect.origin.y上移rect.size.height，使cfy_navBarBgView也隐藏
+    // 目的是防止在navigationBar.hidden=NO时出现动画显示错误
+    if (rect.origin.x < 0) {
+        rect.origin.y = 0 - rect.size.height;
+    }
+    
+    if (rect.origin.y > 0) {
+        rect.size.height = rect.origin.y + rect.size.height;
+        rect.origin.y = 0;
+    }
+    
     return rect;
 }
 
@@ -300,7 +322,7 @@
     CFYNavigationBar *navBarBgView = objc_getAssociatedObject(self, _cmd);
     
     if (nil == navBarBgView) {
-        [self cfy_addNavBarBgView];
+        return [self cfy_addNavBarBgView];
     }
     
     return navBarBgView;
@@ -335,17 +357,19 @@
 }
 
 -(CGFloat)cfy_navigationBarAlpha {
-    NSNumber *alpha = objc_getAssociatedObject(self, _cmd);
-    if (!alpha) {
-        [self setCfy_navigationBarAlpha:1.];
-        return 1.;
+    if (self.cfy_navigationBarAlpha_code) {
+        return self.cfy_navigationBarAlpha_code.floatValue;
     }
     
-    return [alpha floatValue];
+    if (self.cfy_navigationBarAlpha_nav) {
+        return self.cfy_navigationBarAlpha_nav.floatValue;
+    }
+    
+    return 1.;
 }
 
 - (void)setCfy_navigationBarAlpha:(CGFloat)navigationBarAlpha {
-    objc_setAssociatedObject(self, @selector(cfy_navigationBarAlpha), @(navigationBarAlpha), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    self.cfy_navigationBarAlpha_code = @(navigationBarAlpha);
 }
 
 - (void)setCfy_shadowImage:(UIImage *)shadowImage {
@@ -362,6 +386,22 @@
 
 - (void)setCfy_shadowImageColor:(UIColor *)shadowImageColor {
     objc_setAssociatedObject(self, @selector(cfy_shadowImageColor), shadowImageColor, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (NSNumber *)cfy_navigationBarAlpha_code {
+    return objc_getAssociatedObject(self, _cmd);
+}
+
+- (void)setCfy_navigationBarAlpha_code:(NSNumber *)cfy_navigationBarAlpha_code {
+    objc_setAssociatedObject(self, @selector(cfy_navigationBarAlpha_code), cfy_navigationBarAlpha_code, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (NSNumber *)cfy_navigationBarAlpha_nav {
+    return objc_getAssociatedObject(self, _cmd);
+}
+
+- (void)setCfy_navigationBarAlpha_nav:(NSNumber *)cfy_navigationBarAlpha_nav {
+    objc_setAssociatedObject(self, @selector(cfy_navigationBarAlpha_nav), cfy_navigationBarAlpha_nav, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 @end
