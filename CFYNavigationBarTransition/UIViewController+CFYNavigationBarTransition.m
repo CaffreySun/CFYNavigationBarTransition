@@ -301,7 +301,7 @@
         return CGRectZero;
     }
     CGRect rect = [backgroundView.superview convertRect:backgroundView.frame toView:self.view];
-    NSLog(@"_backgroundView.frame == %@", NSStringFromCGRect(rect));
+    // NSLog(@"_backgroundView.frame == %@", NSStringFromCGRect(rect));
     // 出现rect.origin.x < 0,情况只有在页面刚push出来并且navigationBar隐藏的时候。
     // 这个时候讲rect.origin.y上移rect.size.height，使cfy_navBarBgView也隐藏
     // 目的是防止在navigationBar.hidden=NO时出现动画显示错误

@@ -27,6 +27,7 @@
 
 + (void)load {
     CFYSwizzleMethod(self, @selector(viewDidLoad), @selector(cfy_navvc_viewDidLoad));
+    CFYSwizzleMethod(self, @selector(viewWillLayoutSubviews), @selector(cfy_navvc_viewWillLayoutSubviews));
     CFYSwizzleMethod(self, @selector(setNavigationBarHidden:animated:), @selector(cfy_setNavigationBarHidden:animated:));
     CFYSwizzleMethod(self, @selector(setNavigationBarHidden:), @selector(cfy_setNavigationBarHidden:));
     CFYSwizzleMethod(self, @selector(pushViewController:animated:), @selector(cfy_pushViewController:animated:));
@@ -39,6 +40,20 @@
         // 设置navigationBar为透明，但是如果navigationBar.translucent = NO，那么下面这句话就不起作用，navigationBar就会变成不透明的白色，所以不要设置navigationBar.translucent = NO
         [self.navigationBar setBackgroundImage:[UIImage cfy_imageWithColor:[UIColor clearColor]] forBarPosition:0 barMetrics:UIBarMetricsDefault];
         [self.navigationBar setShadowImage:[UIImage new]];
+    }
+}
+
+- (void)cfy_navvc_viewWillLayoutSubviews {
+    [self cfy_navvc_viewWillLayoutSubviews];
+    
+    // 这里为了修复一个bug，当UIViewController的edgesForExtendedLayout赋值为非UIRectEdgeTop时(UIRectEdgeAll是包括了UIRectEdgeTop)，在UIViewController的viewWillLayoutSubviews获取到的导航栏高度不正常，缺少了状态栏高度。
+    // 但当代码执行到UINavigationController的viewWillLayoutSubviews时，获取到的导航栏高度为正常高度。
+    // 所以这里手动调用一下UIViewController的viewWillLayoutSubviews方法，来重新获取导航栏高度。
+    if (self.viewControllers.count == 1) {
+        // 只需要在导航栏的第一个控制器viewWillLayoutSubviews时执行一次就行，后续push的控制器都能获取到正常高度
+        if ((self.topViewController.edgesForExtendedLayout & 0x1) != UIRectEdgeTop) {
+            [self.topViewController viewWillLayoutSubviews];
+        }
     }
 }
 
@@ -92,8 +107,6 @@
         UIColor *shadowImageColor = fromVC.cfy_shadowImageColor;
         [viewController cfy_setNavigationBarShadowImageBackgroundColor:shadowImageColor];
     }
-    
-    
     
     // 保存完成开始Push
     [self cfy_pushViewController:viewController animated:animated];
