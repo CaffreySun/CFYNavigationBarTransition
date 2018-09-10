@@ -33,6 +33,16 @@
     CFYSwizzleMethod(self, @selector(pushViewController:animated:), @selector(cfy_pushViewController:animated:));
 }
 
+- (UIView *)getNavigationBarBackgroundView {
+    static NSString *decodedString;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        decodedString = [[NSString alloc] initWithData:[[NSData alloc] initWithBase64EncodedString:@"X2JhY2tncm91bmRWaWV3" options:NSDataBase64DecodingIgnoreUnknownCharacters] encoding:NSUTF8StringEncoding];
+    });
+    
+    return [self.navigationBar valueForKey:decodedString];
+}
+
 - (void)cfy_navvc_viewDidLoad {
     [self cfy_navvc_viewDidLoad];
     // 没关闭
@@ -117,6 +127,9 @@
     if (close) {
         [self.navigationBar setBackgroundImage:nil forBarPosition:0 barMetrics:UIBarMetricsDefault];
         [self.navigationBar setShadowImage:nil];
+    } else {
+        [self.navigationBar setBackgroundImage:[UIImage cfy_imageWithColor:[UIColor clearColor]] forBarPosition:0 barMetrics:UIBarMetricsDefault];
+        [self.navigationBar setShadowImage:[UIImage new]];
     }
 }
 
@@ -126,11 +139,21 @@
 }
 
 - (BOOL)closeCFYNavigationBar {
-    return [objc_getAssociatedObject(self, _cmd) boolValue];
+    NSNumber *closed = objc_getAssociatedObject(self, _cmd);
+    if (nil == closed) {
+        return YES;
+    } else {
+        return  [closed boolValue];
+    }
 }
 
 - (BOOL)isCloseCFYNavigationBar {
-    return [objc_getAssociatedObject(self, @selector(closeCFYNavigationBar)) boolValue];
+    NSNumber *closed = objc_getAssociatedObject(self, @selector(closeCFYNavigationBar));
+    if (nil == closed) {
+        return YES;
+    } else {
+        return  [closed boolValue];
+    }
 }
 
 

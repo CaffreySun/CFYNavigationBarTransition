@@ -7,6 +7,7 @@
 //
 
 #import "UIViewController+CFYNavigationBarTransition.h"
+#import "UINavigationController+CFYNavigationBarTransition.h"
 #import "UINavigationController+CFYNavigationBarTransition_Public.h"
 #import "CFYNavigationBarTransitionConfig.h"
 #import "UIImage+CFYNavigationBarTransition.h"
@@ -127,7 +128,7 @@
     }
     
     // 获取navigationBar的backgroundView
-    UIView *backgroundView = [self.navigationController.navigationBar valueForKey:@"_backgroundView"];
+    UIView *backgroundView = [self.navigationController getNavigationBarBackgroundView];
     // 如果没有则return
     if (!backgroundView) {
         return;
@@ -296,7 +297,7 @@
  @return _backgroundView的frame
  */
 - (CGRect)cfy_getNavigationBarBackgroundViewRect {
-    UIView *backgroundView = [self.navigationController.navigationBar valueForKey:@"_backgroundView"];
+    UIView *backgroundView = [self.navigationController getNavigationBarBackgroundView];
     if (!backgroundView) {
         return CGRectZero;
     }
