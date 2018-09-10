@@ -7,6 +7,7 @@
 //
 
 #import "UIViewController+CFYNavigationBarTransition.h"
+#import "UINavigationController+CFYNavigationBarTransition.h"
 #import "UINavigationController+CFYNavigationBarTransition_Public.h"
 #import "CFYNavigationBarTransitionConfig.h"
 #import "UIImage+CFYNavigationBarTransition.h"
@@ -127,7 +128,7 @@
     }
     
     // 获取navigationBar的backgroundView
-    UIView *backgroundView = [self.navigationController.navigationBar valueForKey:@"_backgroundView"];
+    UIView *backgroundView = [self.navigationController getNavigationBarBackgroundView];
     // 如果没有则return
     if (!backgroundView) {
         return;
@@ -296,12 +297,12 @@
  @return _backgroundView的frame
  */
 - (CGRect)cfy_getNavigationBarBackgroundViewRect {
-    UIView *backgroundView = [self.navigationController.navigationBar valueForKey:@"_backgroundView"];
+    UIView *backgroundView = [self.navigationController getNavigationBarBackgroundView];
     if (!backgroundView) {
         return CGRectZero;
     }
     CGRect rect = [backgroundView.superview convertRect:backgroundView.frame toView:self.view];
-    NSLog(@"_backgroundView.frame == %@", NSStringFromCGRect(rect));
+    // NSLog(@"_backgroundView.frame == %@", NSStringFromCGRect(rect));
     // 出现rect.origin.x < 0,情况只有在页面刚push出来并且navigationBar隐藏的时候。
     // 这个时候讲rect.origin.y上移rect.size.height，使cfy_navBarBgView也隐藏
     // 目的是防止在navigationBar.hidden=NO时出现动画显示错误

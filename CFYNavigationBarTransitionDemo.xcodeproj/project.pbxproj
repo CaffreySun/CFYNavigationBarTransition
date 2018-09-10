@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		59AE382121461E0D0006C5AC /* NavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59AE382021461E0D0006C5AC /* NavigationController.m */; };
 		84286F9B1E6E993E00168C69 /* CFYNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 84286F9A1E6E993E00168C69 /* CFYNavigationBar.m */; };
 		849BDA9F1E77D0A30044D80B /* shadowImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 849BDA9E1E77D0A30044D80B /* shadowImage.png */; };
 		849BDAA11E77DB300044D80B /* bgimg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 849BDAA01E77DB300044D80B /* bgimg.jpg */; };
@@ -24,6 +25,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		59AE381F21461E0D0006C5AC /* NavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NavigationController.h; sourceTree = "<group>"; };
+		59AE382021461E0D0006C5AC /* NavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NavigationController.m; sourceTree = "<group>"; };
 		84286F991E6E993E00168C69 /* CFYNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFYNavigationBar.h; sourceTree = "<group>"; };
 		84286F9A1E6E993E00168C69 /* CFYNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFYNavigationBar.m; sourceTree = "<group>"; };
 		849BDA9E1E77D0A30044D80B /* shadowImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shadowImage.png; sourceTree = "<group>"; };
@@ -89,6 +92,8 @@
 				E96FABA01E65212D003C4D9A /* AppDelegate.m */,
 				E96FABA21E65212D003C4D9A /* ViewController.h */,
 				E96FABA31E65212D003C4D9A /* ViewController.m */,
+				59AE381F21461E0D0006C5AC /* NavigationController.h */,
+				59AE382021461E0D0006C5AC /* NavigationController.m */,
 				E96FABA51E65212D003C4D9A /* Main.storyboard */,
 				849BDA9E1E77D0A30044D80B /* shadowImage.png */,
 				849BDAA01E77DB300044D80B /* bgimg.jpg */,
@@ -168,8 +173,7 @@
 				TargetAttributes = {
 					E96FAB981E65212D003C4D9A = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = G8U32J44S6;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -218,6 +222,7 @@
 				E96FABE31E6527E9003C4D9A /* CFYSwizzle.m in Sources */,
 				E96FABA11E65212D003C4D9A /* AppDelegate.m in Sources */,
 				E96FAB9E1E65212D003C4D9A /* main.m in Sources */,
+				59AE382121461E0D0006C5AC /* NavigationController.m in Sources */,
 				E96FABE41E6527E9003C4D9A /* UIImage+CFYNavigationBarTransition.m in Sources */,
 				E96FABE51E6527E9003C4D9A /* UINavigationController+CFYNavigationBarTransition.m in Sources */,
 			);
@@ -337,12 +342,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = G8U32J44S6;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = CFYNavigationBarTransitionDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.CFYNavigationBarTransitionDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -350,12 +357,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = G8U32J44S6;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = CFYNavigationBarTransitionDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.CFYNavigationBarTransitionDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};
