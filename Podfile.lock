@@ -1,0 +1,16 @@
+PODS:
+  - CFYNavigationBarTransition (1.3.0-beta)
+
+DEPENDENCIES:
+  - CFYNavigationBarTransition (from `./`)
+
+EXTERNAL SOURCES:
+  CFYNavigationBarTransition:
+    :path: "./"
+
+SPEC CHECKSUMS:
+  CFYNavigationBarTransition: 319b2b48797c385f3c605a394a3a4fba05cd0c9c
+
+PODFILE CHECKSUM: 8f6d017c953191ad10b3e122c0c51c66dcbaf29e
+
+COCOAPODS: 1.5.3

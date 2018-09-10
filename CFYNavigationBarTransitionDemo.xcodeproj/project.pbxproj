@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		59AE382121461E0D0006C5AC /* NavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59AE382021461E0D0006C5AC /* NavigationController.m */; };
-		84286F9B1E6E993E00168C69 /* CFYNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 84286F9A1E6E993E00168C69 /* CFYNavigationBar.m */; };
+		6F0E3BD4658A056635B5E115 /* libPods-CFYNavigationBarTransitionDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AEDF9C68653759983B3EA86D /* libPods-CFYNavigationBarTransitionDemo.a */; };
 		849BDA9F1E77D0A30044D80B /* shadowImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 849BDA9E1E77D0A30044D80B /* shadowImage.png */; };
 		849BDAA11E77DB300044D80B /* bgimg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 849BDAA01E77DB300044D80B /* bgimg.jpg */; };
 		849BDAA31E77E1E70044D80B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 849BDAA21E77E1E70044D80B /* Assets.xcassets */; };
@@ -18,20 +18,17 @@
 		E96FABA71E65212D003C4D9A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E96FABA51E65212D003C4D9A /* Main.storyboard */; };
 		E96FABAC1E65212D003C4D9A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E96FABAA1E65212D003C4D9A /* LaunchScreen.storyboard */; };
 		E96FABC61E652194003C4D9A /* ColorPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = E96FABC51E652194003C4D9A /* ColorPickerView.m */; };
-		E96FABE31E6527E9003C4D9A /* CFYSwizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = E96FABDB1E6527E9003C4D9A /* CFYSwizzle.m */; };
-		E96FABE41E6527E9003C4D9A /* UIImage+CFYNavigationBarTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = E96FABDD1E6527E9003C4D9A /* UIImage+CFYNavigationBarTransition.m */; };
-		E96FABE51E6527E9003C4D9A /* UINavigationController+CFYNavigationBarTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = E96FABDF1E6527E9003C4D9A /* UINavigationController+CFYNavigationBarTransition.m */; };
-		E96FABE61E6527E9003C4D9A /* UIViewController+CFYNavigationBarTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = E96FABE21E6527E9003C4D9A /* UIViewController+CFYNavigationBarTransition.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		59AE381F21461E0D0006C5AC /* NavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NavigationController.h; sourceTree = "<group>"; };
 		59AE382021461E0D0006C5AC /* NavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NavigationController.m; sourceTree = "<group>"; };
-		84286F991E6E993E00168C69 /* CFYNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFYNavigationBar.h; sourceTree = "<group>"; };
-		84286F9A1E6E993E00168C69 /* CFYNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFYNavigationBar.m; sourceTree = "<group>"; };
 		849BDA9E1E77D0A30044D80B /* shadowImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shadowImage.png; sourceTree = "<group>"; };
 		849BDAA01E77DB300044D80B /* bgimg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bgimg.jpg; sourceTree = "<group>"; };
 		849BDAA21E77E1E70044D80B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8DB0CD3B3AC23D86860EEE4C /* Pods-CFYNavigationBarTransitionDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CFYNavigationBarTransitionDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CFYNavigationBarTransitionDemo/Pods-CFYNavigationBarTransitionDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		AEDF9C68653759983B3EA86D /* libPods-CFYNavigationBarTransitionDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CFYNavigationBarTransitionDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AFDA01B4156BE67705176CC4 /* Pods-CFYNavigationBarTransitionDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CFYNavigationBarTransitionDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-CFYNavigationBarTransitionDemo/Pods-CFYNavigationBarTransitionDemo.release.xcconfig"; sourceTree = "<group>"; };
 		E96FAB991E65212D003C4D9A /* CFYNavigationBarTransitionDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CFYNavigationBarTransitionDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E96FAB9D1E65212D003C4D9A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E96FAB9F1E65212D003C4D9A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -43,17 +40,6 @@
 		E96FABAD1E65212D003C4D9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E96FABC41E652194003C4D9A /* ColorPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorPickerView.h; sourceTree = "<group>"; };
 		E96FABC51E652194003C4D9A /* ColorPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorPickerView.m; sourceTree = "<group>"; };
-		E96FABD81E6527E9003C4D9A /* CFYNavigationBarTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFYNavigationBarTransition.h; sourceTree = "<group>"; };
-		E96FABD91E6527E9003C4D9A /* CFYNavigationBarTransitionConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFYNavigationBarTransitionConfig.h; sourceTree = "<group>"; };
-		E96FABDA1E6527E9003C4D9A /* CFYSwizzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFYSwizzle.h; sourceTree = "<group>"; };
-		E96FABDB1E6527E9003C4D9A /* CFYSwizzle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFYSwizzle.m; sourceTree = "<group>"; };
-		E96FABDC1E6527E9003C4D9A /* UIImage+CFYNavigationBarTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+CFYNavigationBarTransition.h"; sourceTree = "<group>"; };
-		E96FABDD1E6527E9003C4D9A /* UIImage+CFYNavigationBarTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+CFYNavigationBarTransition.m"; sourceTree = "<group>"; };
-		E96FABDE1E6527E9003C4D9A /* UINavigationController+CFYNavigationBarTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+CFYNavigationBarTransition.h"; sourceTree = "<group>"; };
-		E96FABDF1E6527E9003C4D9A /* UINavigationController+CFYNavigationBarTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+CFYNavigationBarTransition.m"; sourceTree = "<group>"; };
-		E96FABE01E6527E9003C4D9A /* UINavigationController+CFYNavigationBarTransition_Public.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+CFYNavigationBarTransition_Public.h"; sourceTree = "<group>"; };
-		E96FABE11E6527E9003C4D9A /* UIViewController+CFYNavigationBarTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+CFYNavigationBarTransition.h"; sourceTree = "<group>"; };
-		E96FABE21E6527E9003C4D9A /* UIViewController+CFYNavigationBarTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+CFYNavigationBarTransition.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,17 +47,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F0E3BD4658A056635B5E115 /* libPods-CFYNavigationBarTransitionDemo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		822484B378B48AEA2BDE55EE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AEDF9C68653759983B3EA86D /* libPods-CFYNavigationBarTransitionDemo.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8E6689374FA054A75C97554B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8DB0CD3B3AC23D86860EEE4C /* Pods-CFYNavigationBarTransitionDemo.debug.xcconfig */,
+				AFDA01B4156BE67705176CC4 /* Pods-CFYNavigationBarTransitionDemo.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		E96FAB901E65212D003C4D9A = {
 			isa = PBXGroup;
 			children = (
 				E96FAB9B1E65212D003C4D9A /* CFYNavigationBarTransitionDemo */,
 				E96FAB9A1E65212D003C4D9A /* Products */,
+				8E6689374FA054A75C97554B /* Pods */,
+				822484B378B48AEA2BDE55EE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -86,7 +92,6 @@
 		E96FAB9B1E65212D003C4D9A /* CFYNavigationBarTransitionDemo */ = {
 			isa = PBXGroup;
 			children = (
-				E96FABD71E6527E9003C4D9A /* CFYNavigationBarTransition */,
 				E96FABC31E652194003C4D9A /* ColorPickerView */,
 				E96FAB9F1E65212D003C4D9A /* AppDelegate.h */,
 				E96FABA01E65212D003C4D9A /* AppDelegate.m */,
@@ -122,26 +127,6 @@
 			path = ColorPickerView;
 			sourceTree = "<group>";
 		};
-		E96FABD71E6527E9003C4D9A /* CFYNavigationBarTransition */ = {
-			isa = PBXGroup;
-			children = (
-				E96FABD81E6527E9003C4D9A /* CFYNavigationBarTransition.h */,
-				E96FABD91E6527E9003C4D9A /* CFYNavigationBarTransitionConfig.h */,
-				E96FABDA1E6527E9003C4D9A /* CFYSwizzle.h */,
-				E96FABDB1E6527E9003C4D9A /* CFYSwizzle.m */,
-				E96FABDC1E6527E9003C4D9A /* UIImage+CFYNavigationBarTransition.h */,
-				E96FABDD1E6527E9003C4D9A /* UIImage+CFYNavigationBarTransition.m */,
-				E96FABDE1E6527E9003C4D9A /* UINavigationController+CFYNavigationBarTransition.h */,
-				E96FABDF1E6527E9003C4D9A /* UINavigationController+CFYNavigationBarTransition.m */,
-				E96FABE01E6527E9003C4D9A /* UINavigationController+CFYNavigationBarTransition_Public.h */,
-				E96FABE11E6527E9003C4D9A /* UIViewController+CFYNavigationBarTransition.h */,
-				E96FABE21E6527E9003C4D9A /* UIViewController+CFYNavigationBarTransition.m */,
-				84286F991E6E993E00168C69 /* CFYNavigationBar.h */,
-				84286F9A1E6E993E00168C69 /* CFYNavigationBar.m */,
-			);
-			path = CFYNavigationBarTransition;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -149,6 +134,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E96FABB01E65212D003C4D9A /* Build configuration list for PBXNativeTarget "CFYNavigationBarTransitionDemo" */;
 			buildPhases = (
+				138E133C52E1C0C11E38C141 /* [CP] Check Pods Manifest.lock */,
 				E96FAB951E65212D003C4D9A /* Sources */,
 				E96FAB961E65212D003C4D9A /* Frameworks */,
 				E96FAB971E65212D003C4D9A /* Resources */,
@@ -210,6 +196,27 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		138E133C52E1C0C11E38C141 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CFYNavigationBarTransitionDemo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		E96FAB951E65212D003C4D9A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -217,14 +224,9 @@
 			files = (
 				E96FABA41E65212D003C4D9A /* ViewController.m in Sources */,
 				E96FABC61E652194003C4D9A /* ColorPickerView.m in Sources */,
-				E96FABE61E6527E9003C4D9A /* UIViewController+CFYNavigationBarTransition.m in Sources */,
-				84286F9B1E6E993E00168C69 /* CFYNavigationBar.m in Sources */,
-				E96FABE31E6527E9003C4D9A /* CFYSwizzle.m in Sources */,
 				E96FABA11E65212D003C4D9A /* AppDelegate.m in Sources */,
 				E96FAB9E1E65212D003C4D9A /* main.m in Sources */,
 				59AE382121461E0D0006C5AC /* NavigationController.m in Sources */,
-				E96FABE41E6527E9003C4D9A /* UIImage+CFYNavigationBarTransition.m in Sources */,
-				E96FABE51E6527E9003C4D9A /* UINavigationController+CFYNavigationBarTransition.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,6 +342,7 @@
 		};
 		E96FABB11E65212D003C4D9A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8DB0CD3B3AC23D86860EEE4C /* Pods-CFYNavigationBarTransitionDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;
@@ -355,6 +358,7 @@
 		};
 		E96FABB21E65212D003C4D9A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AFDA01B4156BE67705176CC4 /* Pods-CFYNavigationBarTransitionDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;

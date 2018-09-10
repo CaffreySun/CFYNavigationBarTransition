@@ -102,7 +102,10 @@
     [self cfy_setNavigationBarAlpha:sender.value];
 }
 - (IBAction)barImgAction:(id)sender {
-    [self cfy_setNavigationBarBackgroundImage:[UIImage imageNamed:@"bgicon"]];
+    UIImage *bgImage = [UIImage imageNamed:@"bgicon"];
+    // UIImageResizingModeTile 平铺模式
+    bgImage = [bgImage resizableImageWithCapInsets:UIEdgeInsetsZero resizingMode:UIImageResizingModeTile];
+    [self cfy_setNavigationBarBackgroundImage:bgImage];
 }
 - (IBAction)barColorAction:(id)sender {
     [self cfy_setNavigationBarBackgroundImage:nil];

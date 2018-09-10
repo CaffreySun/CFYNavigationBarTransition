@@ -12,7 +12,7 @@
 
 @property (nonatomic, strong) UIImageView *cfy_shadowImageView;
 
-@property (nonatomic, strong) UIView *cfy_backgroundImageView;
+@property (nonatomic, strong) UIImageView *cfy_backgroundImageView;
 
 @end
 
@@ -63,13 +63,13 @@
     return _cfy_shadowImageView;
 }
 
-- (UIView *)cfy_backgroundImageView {
+- (UIImageView *)cfy_backgroundImageView {
     if (nil == _cfy_backgroundImageView) {
-        _cfy_backgroundImageView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds))];
+        _cfy_backgroundImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds))];
         [self addSubview:_cfy_backgroundImageView];
         _cfy_backgroundImageView.backgroundColor = [UIColor clearColor];
         if (self.cfy_navigationBarBackgroundImage) {
-            _cfy_backgroundImageView.backgroundColor = [UIColor colorWithPatternImage:self.cfy_navigationBarBackgroundImage];
+            _cfy_backgroundImageView.image = self.cfy_navigationBarBackgroundImage;
         }
     }
     
@@ -122,7 +122,7 @@
 
 - (void)setCfy_navigationBarBackgroundImage:(UIImage *)navigationBarBackgroundImage {
     _cfy_navigationBarBackgroundImage = navigationBarBackgroundImage;
-    self.cfy_backgroundImageView.backgroundColor = [UIColor colorWithPatternImage:navigationBarBackgroundImage];
+    self.cfy_backgroundImageView.image = navigationBarBackgroundImage;
 }
 
 @end
