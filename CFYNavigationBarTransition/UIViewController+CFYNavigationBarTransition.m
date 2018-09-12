@@ -82,7 +82,7 @@
     [self cfy_viewDidLoad];
     // 如果存在navigationController则添加cfy_navBarBgView
     // 没有关闭使用本库的功能
-    if (self.navigationController && !self.navigationController.isCloseCFYNavigationBar) {
+    if ([self canAddCustomNavBar]) {
         [self cfy_addNavBarBgView];
     }
 }
@@ -102,19 +102,14 @@
  */
 - (void)cfy_viewWillLayoutSubviews {
     [self cfy_viewWillLayoutSubviews];
-    // 关闭的本库的功能，直接退出
-    if (self.navigationController.isCloseCFYNavigationBar) {
+    
+    if (![self canAddCustomNavBar]) {
         if (self.cfy_navBarBgView) {
             [self.cfy_navBarBgView removeFromSuperview];
         }
         return;
     }
     
-    // 当前viewController没navigationController，直接退出
-    // 关闭的本库的功能，直接退出
-    if (!self.navigationController) {
-        return;
-    }
     /**
      self.navigationController.navigationBar隐藏了，做一些处理。
      如果在navigationBar隐藏时，旋转屏幕，这时如果不处理后并return，而是走下面的代码，那么并不能正确的获取到cfy_navBarBgView的frame。
@@ -154,7 +149,7 @@
  */
 - (void)cfy_setNavigationBarBackgroundColor:(UIColor *)color {
     self.cfy_navigationBarBackgroundColor = color;
-    if (self.navigationController) {
+    if ([self canAddCustomNavBar]) {
         self.cfy_navBarBgView.cfy_navigationBarBackgroundColor = color;
     }
 }
@@ -166,7 +161,7 @@
  */
 - (void)cfy_setNavigationBarBackgroundImage:(UIImage *)image {
     self.cfy_navigationBarBackgroundImage = image;
-    if (self.navigationController) {
+    if ([self canAddCustomNavBar]) {
         self.cfy_navBarBgView.cfy_navigationBarBackgroundImage = image;
     }
 }
@@ -178,13 +173,13 @@
  */
 - (void)cfy_setNavigationBarAlpha:(CGFloat)alpha {
     self.cfy_navigationBarAlpha_code = @(alpha);
-    if (self.navigationController) {
+    if ([self canAddCustomNavBar]) {
         self.cfy_navBarBgView.alpha = alpha;
     }
 }
 
 /**
- 根据上一个导航栏透明度设置当前导航栏都名都
+ 根据上一个导航栏透明度设置当前导航栏透明度
  库内部方法，外部调用会有问题奥
  @param alpha 透明度，值为0 ~ 1.0
  */
@@ -199,7 +194,7 @@
  */
 - (void)cfy_setNavigationBarShadowImageBackgroundColor:(UIColor *)color {
     self.cfy_shadowImageColor = color;
-    if (self.navigationController) {
+    if ([self canAddCustomNavBar]) {
         self.cfy_navBarBgView.cfy_shadowImageColor = color;
     }
 }
@@ -212,7 +207,7 @@
  */
 - (void)cfy_setNavigationBarShadowImage:(UIImage * _Nullable )image {
     self.cfy_shadowImage = image;
-    if (self.navigationController) {
+    if ([self canAddCustomNavBar]) {
         self.cfy_navBarBgView.cfy_shadowImage = image;
     }
 }
@@ -225,7 +220,7 @@
  @param animated 动画
  */
 - (void)cfy_setNavigationBarHidden:(BOOL)hidden animated:(BOOL)animated {
-    if (self.navigationController) {
+    if ([self canAddCustomNavBar]) {
         // 这里只在cfy_navBarBgView隐藏时使用了动画，原因是cfy_navBarBgView显示时系统自动给加上了动画（这很神奇）
         if (hidden && self.cfy_viewAppeared && animated && !self.navigationController.navigationBar.hidden) {
             // 在cfy_navBarBgView隐藏，并且view已经Appeared，并且有动画，并且navigationBar不是已经隐藏了时就进行动画
@@ -247,16 +242,11 @@
  添加navigationBar背景view
  */
 - (CFYNavigationBar *)cfy_addNavBarBgView {
-    if (self.navigationController.isCloseCFYNavigationBar) {
+    if (![self canAddCustomNavBar]) {
         return nil;
     }
+    
     if (!self.isViewLoaded) {
-        return nil;
-    }
-    if (!self.navigationController) {
-        return nil;
-    }
-    if (!self.navigationController.navigationBar) {
         return nil;
     }
     
@@ -316,6 +306,30 @@
     }
     
     return rect;
+}
+
+
+/**
+ 是否可以添加自定义bar
+ */
+- (BOOL)canAddCustomNavBar {
+    if (![self.parentViewController isKindOfClass:[UINavigationController class]]) {
+        return NO;
+    }
+    
+    if (!self.navigationController) {
+        return NO;
+    }
+    
+    if (self.navigationController.isCloseCFYNavigationBar) {
+        return NO;
+    }
+    
+    if (!self.navigationController.navigationBar) {
+        return NO;
+    }
+    
+    return YES;
 }
 
 #pragma mark - getter/setter -
