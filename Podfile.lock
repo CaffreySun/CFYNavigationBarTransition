@@ -1,5 +1,5 @@
 PODS:
-  - CFYNavigationBarTransition (1.3.0)
+  - CFYNavigationBarTransition (1.3.1)
 
 DEPENDENCIES:
   - CFYNavigationBarTransition (from `./`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "./"
 
 SPEC CHECKSUMS:
-  CFYNavigationBarTransition: dbb65ffd10cead9d210dad1ef48272740d7fd83a
+  CFYNavigationBarTransition: 8e9d6aba6e3156134771cd935cef0a9918fc1fe6
 
 PODFILE CHECKSUM: 8f6d017c953191ad10b3e122c0c51c66dcbaf29e
 
