@@ -132,8 +132,7 @@
     // 获取navigationBar的backgroundView在self.view中的位置，这个位置也就是cfy_navBarBgView所在的位置。
     CGRect rect = [self cfy_getNavigationBarBackgroundViewRect];
     
-    // cfy_navBarBgView的x固定0
-    self.cfy_navBarBgView.frame = CGRectMake(0, rect.origin.y, rect.size.width, rect.size.height);
+    self.cfy_navBarBgView.frame = rect;
     
     // 设置当前view的clipsToBounds = NO，原因是，self.view.top可能是从navigationBar.bottom开始，如果clipsToBounds = YES，则cfy_navBarBgView无法显示
     self.view.clipsToBounds = NO;
@@ -254,7 +253,7 @@
     CGRect rect = [self cfy_getNavigationBarBackgroundViewRect];
     
     // 初始化
-    CFYNavigationBar *navBarBgView = [[CFYNavigationBar alloc] initWithFrame:CGRectMake(0, rect.origin.y, rect.size.width, rect.size.height)];
+    CFYNavigationBar *navBarBgView = [[CFYNavigationBar alloc] initWithFrame:rect];
     [self.view addSubview:navBarBgView];
     
     // 设置背景颜色
@@ -293,12 +292,6 @@
     }
     CGRect rect = [backgroundView.superview convertRect:backgroundView.frame toView:self.view];
     // NSLog(@"_backgroundView.frame == %@", NSStringFromCGRect(rect));
-    // 出现rect.origin.x < 0,情况只有在页面刚push出来并且navigationBar隐藏的时候。
-    // 这个时候讲rect.origin.y上移rect.size.height，使cfy_navBarBgView也隐藏
-    // 目的是防止在navigationBar.hidden=NO时出现动画显示错误
-    if (rect.origin.x < 0) {
-        rect.origin.y = 0 - rect.size.height;
-    }
     
     if (rect.origin.y > 0) {
         rect.size.height = rect.origin.y + rect.size.height;
@@ -338,6 +331,17 @@
     
     if (nil == navBarBgView) {
         return [self cfy_addNavBarBgView];
+    } else {
+        CGRect frame = navBarBgView.frame;
+        if (frame.origin.x < 0) {
+            // 出现rect.origin.x < 0,情况只有在页面刚push出来并且navigationBar隐藏的时候。
+            // 这个时候讲rect.origin.y上移rect.size.height，使cfy_navBarBgView也隐藏
+            // 目的是防止在navigationBar.hidden=NO时出现动画显示错误
+            frame.origin.x = 0;
+            frame.origin.y = 0 - frame.size.height;
+            
+            navBarBgView.frame = frame;
+        }
     }
     
     return navBarBgView;
