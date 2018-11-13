@@ -122,9 +122,13 @@
     [self cfy_pushViewController:viewController animated:animated];
 }
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-implementations"
 - (void)closeCFYNavigationBarFunction:(BOOL)close {
     [self openCFYNavigationBarFunction:!close];
 }
+#pragma clang diagnostic pop
+
 
 - (void)openCFYNavigationBarFunction:(BOOL)open {
     BOOL close = !open;
@@ -152,10 +156,13 @@
     }
 }
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-implementations"
 - (BOOL)isCloseCFYNavigationBar {
     return ![self isOpenedCFYNavigationBar];
 }
-    
+#pragma clang diagnostic pop
+
 - (BOOL)isOpenedCFYNavigationBar {
     NSNumber *closed = objc_getAssociatedObject(self, @selector(closeCFYNavigationBar));
     if (nil == closed) {
