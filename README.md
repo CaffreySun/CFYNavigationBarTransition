@@ -20,7 +20,9 @@
 - 隐藏/显示则直接调用UINavigationController中原生的设置NavigationBar隐藏的方法`[navigationController setNavigationBarHidden:]`或`[navigationController setNavigationBarHidden:animated:]`
 
 ## 注意
-　　注意事项：不要设置NavigationBar的translucent为NO，原因是设置了translucent=NO，NavigationBar就不能透明了。
+
+1. 不要设置NavigationBar的translucent为NO，原因是设置了translucent=NO，NavigationBar就不能透明了。
+2. **库的功能默认是关闭的请在需要开启的UINavigationController对象上调用`openCFYNavigationBarFunction:`方法进行开启**，默认不开启的原因是为了避免自定义导航栏出现在一些系统的导航栏上。
 
 ## 更新列表
 #### 1.0.0

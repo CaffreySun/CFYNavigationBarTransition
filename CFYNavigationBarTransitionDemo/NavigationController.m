@@ -17,7 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self closeCFYNavigationBarFunction:NO];
+    [self openCFYNavigationBarFunction:YES];
 }
 
 - (void)didReceiveMemoryWarning {

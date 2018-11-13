@@ -76,18 +76,30 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 @interface UINavigationController (CFYNavigationBarTransition_Public)
+
 /**
  关闭库的功能
  
  @param close 是否关闭
  */
-- (void)closeCFYNavigationBarFunction:(BOOL)close;
-
-
+- (void)closeCFYNavigationBarFunction:(BOOL)close DEPRECATED_MSG_ATTRIBUTE("use openCFYNavigationBarFunction: instead");
+    
 /**
  是否关闭
  */
-@property (readonly) BOOL isCloseCFYNavigationBar;
+@property (readonly) BOOL isCloseCFYNavigationBar DEPRECATED_MSG_ATTRIBUTE("use isOpenedCFYNavigationBar instead");;
+    
+/**
+ 打开库的功能
+ 
+ @param open 是否打开
+ */
+- (void)openCFYNavigationBarFunction:(BOOL)open;
+    
+/**
+ 是否打开
+ */
+@property (readonly) BOOL isOpenedCFYNavigationBar;
 
 @end
 

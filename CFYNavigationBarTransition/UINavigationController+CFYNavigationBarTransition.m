@@ -123,6 +123,11 @@
 }
 
 - (void)closeCFYNavigationBarFunction:(BOOL)close {
+    [self openCFYNavigationBarFunction:!close];
+}
+
+- (void)openCFYNavigationBarFunction:(BOOL)open {
+    BOOL close = !open;
     self.closeCFYNavigationBar = close;
     if (close) {
         [self.navigationBar setBackgroundImage:nil forBarPosition:0 barMetrics:UIBarMetricsDefault];
@@ -143,16 +148,20 @@
     if (nil == closed) {
         return YES;
     } else {
-        return  [closed boolValue];
+        return [closed boolValue];
     }
 }
 
 - (BOOL)isCloseCFYNavigationBar {
+    return ![self isOpenedCFYNavigationBar];
+}
+    
+- (BOOL)isOpenedCFYNavigationBar {
     NSNumber *closed = objc_getAssociatedObject(self, @selector(closeCFYNavigationBar));
     if (nil == closed) {
-        return YES;
+        return NO;
     } else {
-        return  [closed boolValue];
+        return ![closed boolValue];
     }
 }
 
